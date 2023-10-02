@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var errorOutlet: UILabel!
     
+    @IBOutlet weak var wrongPasswordOutlet: UILabel!
     
     @IBOutlet weak var passwordOutlet: UITextField!
     
@@ -95,11 +96,24 @@ class ViewController: UIViewController {
     
     
     @IBAction func addAction(_ sender: UIButton) {
-        if (passwordOutlet.text == "seaver"){
+        if (passwordOutlet.text == "Seaver"){
             thing.append(foodAddOutlet.text!)
-            price.append(Double(addPriceOutlet.text)!)
+            price.append(Double(addPriceOutlet.text!)!)
+            menuOutlet.text = ""
+            realMenu = ""
+            
+            for i in 0 ..< thing.count {
+                realMenu += "\(thing[i]) -------- \(price[i]) \n"
+                
+            }
+            menuOutlet.text = realMenu
             
         }
+        else {
+            wrongPasswordOutlet.text = "wrong password stupid"
+            
+        }
+        
         
     }
     
